@@ -23,8 +23,8 @@ static void	init_data(t_main *data, char *filename)
 	i = -1;
 	while (++i < AMOUNT_TEXTURE)
 	{
-		data->textures[i].prt = NULL;
 		data->textures[i].texture_address = NULL;
+		data->textures[i].prt = NULL;
 	}
 	data->map = NULL;
 	data->rmap = NULL;

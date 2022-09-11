@@ -10,9 +10,7 @@ static void	define_texture_wall(t_main *data, char *path, int type)
 	if (len < MIN_LEN_PATH_TEXTURE)
 		end_program(data, ERROR_LEN_PATH_TEXTURE, 1);
 	if (!ft_strcmp(tmp + len - LEN_EXTENSION, EXTENSION))
-		data->textures[type].prt = mlx_xpm_file_to_image(data->mlx, path, \
-		(int *)&data->textures[type].texture_width, \
-		(int *)&data->textures[type].texture_height);
+		data->textures[type].prt = mlx_xpm_file_to_image(data->mlx, path, (int *)&data->textures[type].texture_width, (int *)&data->textures[type].texture_height);
 	else
 		end_program(data, ERROR_EXTENSION_TEXTURE, 1);
 	if (!data->textures[type].prt)

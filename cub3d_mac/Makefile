@@ -2,7 +2,7 @@ NAME			=	cub3d
 
 CC				=	gcc
 
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g
 LIBRARIES		=	-L./libft -lft
 
 HEADER_DIR		=	includes
