@@ -1,7 +1,7 @@
-NO ./textures/wall_metal_1.xpm
-SO ./textures/wall_metal_1.xpm
-WE ./textures/wall_metal_1.xpm
-EA ./textures/wall_metal_1.xpm
+NO ./textures/wall_3_1.xpm
+SO ./textures/wall_3_2.xpm
+WE ./textures/wall_3_3.xpm
+EA ./textures/wall_3_4.xpm
 
 C 200,230,255
 F 80,60,30
@@ -9,7 +9,7 @@ F 80,60,30
         1111111111111111111111111
         1001000000100000000000001
         1011000000100000000000001
-        1011000N00100000010000001
+        1011000E00100000010000001
         1011000000100000010000001
         1011000000100000010000001
         1011000000100000010000001

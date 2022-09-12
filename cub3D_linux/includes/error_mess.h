@@ -22,7 +22,9 @@
 # define ERROR_LEN_PATH_TEXTURE "error: len path texture\n"
 # define ERROR_EXTENSION_TEXTURE "error: extension texture\n"
 # define ERROR_OPEN_TEXTURE "error: open texture\n"
-# define ERROR_MLX_GET_DATA_ADDR "error: mlx_get_data_addr\n"   //+
+
+# define ERROR_MLX_GET_DATA_ADDR "error: mlx_get_data_addr\n"   //+???
+
 # define ERROR_NO_MAP "error: no map in file\n"
 # define ERROR_FORMAT_RGB "error: format rgb\n"
 # define ERROR_MAX_RGB "error: value more max rgb\n"
@@ -30,6 +32,7 @@
 
 # define ERROR_INVALID_CHR_MAP "error: invalid char in map\n"	//+
 # define ERROR_MANY_HEROES "error: many herous on map\n"		//+
+# define ERROR_NO_HERO "Error: no hero in map\n"
 # define ERROR_BORDERS_MAP "error: borders in map\n"			//+
 
 # define ERROR_MLX_NEW_WINDOW "error: mlx new window\n"			//+

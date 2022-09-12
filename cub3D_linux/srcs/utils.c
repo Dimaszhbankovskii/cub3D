@@ -1,14 +1,5 @@
 #include "cub3D.h"
 
-void	get_texture_address(t_texture *texture, t_main *data)
-{
-	texture->texture_address = (unsigned int *)mlx_get_data_addr(\
-	texture->prt, &texture->bits_per_pixel, \
-	&texture->size_line, &texture->endian);
-	if (!texture->texture_address)
-		end_program(data, ERROR_MLX_GET_DATA_ADDR, 1);
-}
-
 int	size_two_array_char(char **array)
 {
 	int	i;
@@ -76,4 +67,25 @@ char	**calloc_two_array_char(int size)
 	while (++i < size + 1)
 		array[i] = NULL;
 	return (array);
+}
+
+t_point	set_point(double x, double y)
+{
+	t_point	point;
+
+	point.x = x;
+	point.y = y;
+	return (point);
+}
+
+void	my_mlx_pixel_put(t_main *data, int x, int y, unsigned int color)
+{
+	char	*dst;
+
+	if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
+	{
+		dst = data->mlx.img.address + (y * data->mlx.img.size_line + \
+		x * (data->mlx.img.bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }

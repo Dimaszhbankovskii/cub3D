@@ -18,6 +18,22 @@ typedef struct s_file
 	char	*line;
 }	t_file;
 
+typedef struct s_image
+{
+	void	*prt;
+	char	*address;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}	t_image;
+
+typedef struct s_mlx
+{
+	void	*prt;
+	void	*win;
+	t_image	img;
+}	t_mlx;
+
 typedef struct s_token
 {
 	char			*line1;
@@ -26,6 +42,17 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct s_texture
+{
+	void	*prt;
+	int		*address;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	int		width;
+	int		height;
+}	t_texture;
+
 typedef struct s_rgb
 {
 	unsigned int	r;
@@ -33,71 +60,66 @@ typedef struct s_rgb
 	unsigned int	b;
 }	t_rgb;
 
-typedef struct s_texture
+typedef struct s_map
 {
-	void			*prt;
-	unsigned int	*texture_address;
-	int				bits_per_pixel;
-	int				size_line;
-	int				endian;
-	unsigned int	texture_width;
-	unsigned int	texture_height;
-	double			width_to_height;
-}	t_texture;
+	char	**p;
+	char	**pr;
+	int		height;
+	int		width;
+	int		x;
+	int		y;
+}	t_map;
 
-typedef struct s_image
+typedef struct s_point
 {
-	void			*prt;
-	unsigned int	*img_address;
-	int				bits_per_pixel;
-	int				size_line;
-	int				endian;
-}	t_image;
+	double	x;
+	double	y;
+}	t_point;
+
+typedef struct s_hero
+{
+	t_point	pos;
+	t_point	dir;
+}	t_hero;
 
 typedef struct s_ray
 {
-	double			distance;
-	unsigned int	height;
-	double			texture_position;
-	char			dir;
+	t_point	dir;
+	t_point	delta;
+	t_point	side;
+	int		i;
+	int		step_x;
+	int		step_y;
+	int		intersect_y;
 }	t_ray;
+
+typedef struct s_wall
+{
+	int		height;
+	int		top;
+	int		x;
+	double	y;
+	double	distance;
+}	t_wall;
 
 typedef struct s_main
 {
 	t_file			file;
+	t_mlx			mlx;
 	t_token			*tokens;
-	void			*mlx;
-	void			*mlx_window;
-	t_image			image;
-	unsigned int	window_width;
-	unsigned int	window_height;
-	t_texture		textures[AMOUNT_TEXTURE];
+	t_texture		textures[WALL_TEXTURE];
 	unsigned int	count_textures;
 	t_rgb			color;
 	unsigned int	ceil_color;
-	unsigned int	old_ceil_color;
 	unsigned int	floor_color;
-	unsigned int	old_floor_color;
-	unsigned int	amount_map_rows;
-	unsigned int	max_map_width;
-	char			**map;
-	char			**rmap;
-	// int				hero_pos_int_x;
-	// int				hero_pos_int_y;
-	double			hero_pos_x;
-	double			hero_pos_y;
-	double			hero_angle;
-	double			vector_x;
-	double			vector_y;
-	float			center_ray;
-	double			scale_column;
-	t_ray			*rays;
+	t_map			map;
+	t_hero			hero;
+	t_point			plane;
+	t_ray			ray;
+	t_wall			wall;
 }	t_main;
 
 void	process_cub3d(t_main *data);
-void	init_game_cub3d(t_main *data);
-int		loop_cub3d(t_main *data);
-void	raycasting(t_main *data);
 
 void	parse_file_to_tokens(t_main *data);
 void	parse_textures(t_main *data);
@@ -105,6 +127,12 @@ void	parse_texture_wall(t_main *data, char *line);
 void	parse_texture_ceil_floor(t_main *data, char *line);
 void	parse_map(t_main *data);
 
+void	rendering_image(t_main *data);
+void	set_color_ceil_floor(t_main *data);
+void	define_wall(t_main *data);
+int 	press_key(int keycode, t_main *data);
+void	define_wall_x(t_main *data);
+void	rendering_wall(t_main *data);
 
 t_token	*new_token(t_main *data);
 void	add_token(t_token **tokens, t_token *new);
@@ -123,13 +151,16 @@ char	**malloc_two_array_char(char **array);
 void	free_two_array_char(char **array);
 int		ft_str_isdigit(char *str);
 char	**calloc_two_array_char(int size);
+t_point	set_point(double x, double y);
+void	my_mlx_pixel_put(t_main *data, int x, int y, unsigned int color);
 
 //--------------
 
-void	print_tokens(t_main *data);
-void	check_program(t_main *data);
-void	print_map(t_main *data);
-void	print_rmap(t_main *data);
-void	print_ray(t_main *data, unsigned int ray);
+// void	print_tokens(t_main *data);
+// void	check_program(t_main *data);
+// void	print_map(t_main *data);
+// void	print_rmap(t_main *data);
+// void	print_hero(t_main *data);
+// void	print_plane(t_main *data);
 
 #endif

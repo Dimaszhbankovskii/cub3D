@@ -21,17 +21,13 @@ HEADER			+=	$(addprefix $(HEADER_DIR)/,$(HEADER_ERROR))
 
 LIBFT			=	./libft/libft.a
 
-SRCS_DIR		=	srcs
-SRCS_DIR_PARSER	=	srcs/parser
+SRCS_DIR			=	srcs
+SRCS_DIR_PARSER		=	srcs/parser
+SRCS_DIR_EXECUTOR	=	srcs/executor
 
 SRCS_LIST		=	main.c \
-					process_cub3d.c \
-					init_game_cub3d.c \
-					raycasting.c \
-					loop_cub3d.c \
 					end_program.c \
-					utils.c \
-					check_prog.c
+					utils.c
 
 SRCS			=	$(addprefix $(SRCS_DIR)/,$(SRCS_LIST))
 
@@ -43,14 +39,23 @@ SRCS_LIST_PARSER	=	tokens_1.c \
 						parse_texture_ceil_floor.c \
 						parse_map.c
 
-SRCS_PARSER		=	$(addprefix $(SRCS_DIR_PARSER)/,$(SRCS_LIST_PARSER))
+SRCS_PARSER			=	$(addprefix $(SRCS_DIR_PARSER)/,$(SRCS_LIST_PARSER))
+
+SRCS_LIST_EXECUTOR	=	process_cub3d.c \
+						rendering_image_1.c \
+						rendering_image_2.c \
+						manage_keys.c
+
+SRCS_EXECUTOR		=	$(addprefix $(SRCS_DIR_EXECUTOR)/,$(SRCS_LIST_EXECUTOR))
 
 SRCS			+= $(SRCS_PARSER)
+SRCS			+= $(SRCS_EXECUTOR)
 
 OBJS_DIR		=	objs
 
 OBJS			=	$(addprefix $(OBJS_DIR)/,$(SRCS_LIST:.c=.o))
 OBJS			+=	$(addprefix $(OBJS_DIR)/,$(SRCS_LIST_PARSER:.c=.o))
+OBJS			+=	$(addprefix $(OBJS_DIR)/,$(SRCS_LIST_EXECUTOR:.c=.o))
 
 NORMAL			=	\033[0m
 BOLD			=	\033[1m
@@ -75,6 +80,10 @@ $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(HEADER) Makefile
 	@echo "$(BLUE)Creating object file$(WHITE) --> $(notdir $@) --> $(GREEN)[Done]$(NORMAL)"
 
 $(OBJS_DIR)/%.o : $(SRCS_DIR_PARSER)/%.c $(HEADER) Makefile
+	@$(CC) $(CFLAGS) $(C_MLXFLAGS) -O3 -c $< -o $@ -I./$(HEADER_DIR)
+	@echo "$(BLUE)Creating object file$(WHITE) --> $(notdir $@) --> $(GREEN)[Done]$(NORMAL)"
+
+$(OBJS_DIR)/%.o : $(SRCS_DIR_EXECUTOR)/%.c $(HEADER) Makefile
 	@$(CC) $(CFLAGS) $(C_MLXFLAGS) -O3 -c $< -o $@ -I./$(HEADER_DIR)
 	@echo "$(BLUE)Creating object file$(WHITE) --> $(notdir $@) --> $(GREEN)[Done]$(NORMAL)"
 

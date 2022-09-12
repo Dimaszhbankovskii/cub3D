@@ -15,20 +15,19 @@ static void	init_data(t_main *data, char *filename)
 
 	data->file.filename = filename;
 	data->file.line = NULL;
+	data->mlx.prt = NULL;
+	data->mlx.win = NULL;
+	data->mlx.img.prt = NULL;
+	data->mlx.img.address = NULL;
 	data->tokens = NULL;
-	data->mlx = NULL;
-	data->mlx_window = NULL;
-	data->image.prt = NULL;
-	data->image.img_address = NULL;
 	i = -1;
-	while (++i < AMOUNT_TEXTURE)
+	while (++i < WALL_TEXTURE)
 	{
 		data->textures[i].prt = NULL;
-		data->textures[i].texture_address = NULL;
+		data->textures[i].address = NULL;
 	}
-	data->map = NULL;
-	data->rmap = NULL;
-	data->rays = NULL;
+	data->map.p = NULL;
+	data->map.pr = NULL;
 }
 
 int	main(int argc, char **argv)

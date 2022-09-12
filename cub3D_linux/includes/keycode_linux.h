@@ -4,8 +4,8 @@
 # define KEY_ESC 65307			// key 'Esc'
 # define DEFAULT_FRACTOL 114	// key 'R'
 
-# define MOVE_ANGLE_RIGHT 101	// key 'E'
-# define MOVE_ANGLE_LEFT 113	// key 'Q'
+# define ROTATE_RIGHT 101	// key 'E'
+# define ROTATE_LEFT 113	// key 'Q'
 # define ANGLE_STEP 0.05
 
 # define MOUSE_SCROLL_UP 0x04

@@ -10,16 +10,20 @@ static void	define_texture_wall(t_main *data, char *path, int type)
 	if (len < MIN_LEN_PATH_TEXTURE)
 		end_program(data, ERROR_LEN_PATH_TEXTURE, 1);
 	if (!ft_strcmp(tmp + len - LEN_EXTENSION, EXTENSION))
-		data->textures[type].prt = mlx_xpm_file_to_image(data->mlx, path, \
-		(int *)&data->textures[type].texture_width, \
-		(int *)&data->textures[type].texture_height);
+		data->textures[type].prt = mlx_xpm_file_to_image(\
+		data->mlx.prt, path, (int *)&data->textures[type].width, \
+		(int *)&data->textures[type].height);
 	else
 		end_program(data, ERROR_EXTENSION_TEXTURE, 1);
-	if (!data->textures[type].prt)
+	if (!data->textures[type].prt && \
+	data->textures[type].width != TEXTURE_SIZE && \
+	data->textures[type].height != TEXTURE_SIZE)
 		end_program(data, ERROR_OPEN_TEXTURE, 1);
-	get_texture_address(&data->textures[type], data);
-	data->textures[type].width_to_height = data->textures[type].texture_width /\
-	data->textures[type].texture_height;
+	data->textures[type].address = (int *)mlx_get_data_addr(\
+	data->textures[type].prt, &data->textures[type].bits_per_pixel, \
+	&data->textures[type].size_line, &data->textures[type].endian);
+	if (!data->textures[type].address)
+		end_program(data, ERROR_MLX_GET_DATA_ADDR, 1);
 }
 
 void	parse_texture_wall(t_main *data, char *line)
