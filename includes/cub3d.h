@@ -6,7 +6,7 @@
 /*   By: vjose <vjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:52:29 by vjose             #+#    #+#             */
-/*   Updated: 2022/09/18 17:27:00 by vjose            ###   ########.fr       */
+/*   Updated: 2022/09/18 17:51:45 by vjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 # include "parser.h"
 # include "error_mess.h"
-# include "keycode_linux.h"
+# include "keycode.h"
 
 typedef struct s_file
 {

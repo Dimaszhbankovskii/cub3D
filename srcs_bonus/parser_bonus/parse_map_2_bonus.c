@@ -6,7 +6,7 @@
 /*   By: vjose <vjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:57:30 by vjose             #+#    #+#             */
-/*   Updated: 2022/09/18 16:57:31 by vjose            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:46:47 by vjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ static int	check_chr_map(t_main *data, int j, int i)
 	if (data->map.pr[i - 1][j] == ' ' || \
 	data->map.pr[i + 1][j] == ' ' || \
 	data->map.pr[i][j - 1] == ' ' || \
-	data->map.pr[i][j + 1] == ' ' || \
-	data->map.pr[i - 1][j - 1] == ' ' || \
-	data->map.pr[i - 1][j + 1] == ' ' || \
-	data->map.pr[i + 1][j - 1] == ' ' || \
-	data->map.pr[i + 1][j + 1] == ' ')
+	data->map.pr[i][j + 1] == ' '])
 		return (1);
 	return (0);
 }

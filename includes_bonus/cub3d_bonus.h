@@ -6,7 +6,7 @@
 /*   By: vjose <vjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:55:52 by vjose             #+#    #+#             */
-/*   Updated: 2022/09/18 17:27:22 by vjose            ###   ########.fr       */
+/*   Updated: 2022/09/18 17:51:52 by vjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 # include "parser_bonus.h"
 # include "error_mess_bonus.h"
-# include "keycode_linux_bonus.h"
+# include "keycode_bonus.h"
 
 typedef struct s_file
 {

@@ -6,12 +6,12 @@
 /*   By: vjose <vjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:29:31 by vjose             #+#    #+#             */
-/*   Updated: 2022/09/18 17:43:00 by vjose            ###   ########.fr       */
+/*   Updated: 2022/09/18 18:33:39 by vjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODE_BONUS
-# define KEYCODE_BONUS
+#ifndef KEYCODE_BONUS_H
+# define KEYCODE_BONUS_H
 
 # define KEY_ESC 53
 
