@@ -6,7 +6,7 @@
 /*   By: vjose <vjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:57:15 by vjose             #+#    #+#             */
-/*   Updated: 2022/09/18 17:20:34 by vjose            ###   ########.fr       */
+/*   Updated: 2022/09/24 15:57:00 by vjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ static void	free_mlx_elements(t_main *data)
 		mlx_destroy_image(data->mlx.prt, data->mlx.img.prt);
 	if (data->mlx.win)
 		mlx_destroy_window(data->mlx.prt, data->mlx.win);
-	// if (data->mlx.prt)
-	// {
-	// 	mlx_destroy_display(data->mlx.prt);
-	// 	free (data->mlx.prt);
-	// }
 }
 
 void	end_program(t_main *data, char *error_mess, int error_num)
